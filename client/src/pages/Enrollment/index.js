@@ -34,12 +34,12 @@ const EnrollmentPage = ({isVerified, setIsVerified}) => {
 
     const [birthdate, setBirthdate] = useState(new Date());
     const [error, setError] = useState(null);
-    const [showVerifyModal, setShowVerifyModal] = useState(true);
+    const [showVerifyModal, setShowVerifyModal] = useState(false);
 
     //Functions
     const onSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/enrollment', studentDetails)
+        axios.post('https://stclarecollege.herokuapp.com/enrollment', studentDetails)
             .then(setShowVerifyModal(true))
             .catch(err => {
                 setError(err.response.data.message);
